@@ -1,6 +1,6 @@
 # Resource file directory
 
-*DO NOT REMOVE, RENAME OR MANIPULATE WITH THIS DIRECTORY!*
+**DO NOT REMOVE, RENAME OR MANIPULATE WITH THIS DIRECTORY!**
 
 ## Instructions
 
@@ -13,5 +13,5 @@ Top.csv contains numbers on the top side of the nonogram, but:
 - lines represent columns; from top to the bottom line meaning from left to the right column
 - numbers in lines are ordered left to right meaning from bottom number to the top one
 
-Hint: _rotate nonogram 90 degrees to the right and rewrite the numbers as they are_.
+Hint: *rotate nonogram 90 degrees to the right and rewrite the numbers as they are*.
  
