@@ -1,6 +1,8 @@
 from csv import reader as csv_reader
 from os.path import join as path_join
 
+from src.messages import DR_INCORRECT_FN
+
 
 class DataResolver:
     RES_DIR_PATH = path_join('..', 'res')
@@ -25,5 +27,4 @@ class DataResolver:
     @staticmethod
     def _validate_file_name(fn: str):
         if fn not in [DataResolver.LEFT_CSV_FN, DataResolver.TOP_CSV_FN]:
-            raise Exception(
-                f"Incorrect file name. '{DataResolver.LEFT_CSV_FN}' or '{DataResolver.TOP_CSV_FN}' expected")
+            raise Exception(DR_INCORRECT_FN % (DataResolver.LEFT_CSV_FN, DataResolver.TOP_CSV_FN))
