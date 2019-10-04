@@ -1,7 +1,7 @@
 from csv import reader as csv_reader
 from os.path import join as path_join
 
-from src.messages import DR_INCORRECT_FN
+from src.messages import DR_INCORRECT_FN, INVALID_CHAR_IN_RES
 
 
 class DataResolver:
@@ -22,9 +22,12 @@ class DataResolver:
         DataResolver._validate_file_name(file_name)
         with open(path_join(DataResolver.RES_DIR_PATH, file_name)) as f:
             reader = csv_reader(f)
-            return [[int(elem) for elem in line] for line in reader]
+            try:
+                return [[int(elem) for elem in line] for line in reader]
+            except ValueError:
+                raise ValueError(INVALID_CHAR_IN_RES.format(file_name))
 
     @staticmethod
     def _validate_file_name(fn: str):
         if fn not in [DataResolver.LEFT_CSV_FN, DataResolver.TOP_CSV_FN]:
-            raise Exception(DR_INCORRECT_FN % (DataResolver.LEFT_CSV_FN, DataResolver.TOP_CSV_FN))
+            raise Exception(DR_INCORRECT_FN.format(DataResolver.LEFT_CSV_FN, DataResolver.TOP_CSV_FN))
