@@ -1,7 +1,8 @@
 from setuptools import setup
 
 setup(name='mgsolver',
-      version='1.1.1',
+      version='0.0.1',
+      packages=['ball_sort_puzzle', 'nonogram', 'sudoku'],
       description='Collection of mini game solvers.',
       keywords="mgsolver mini game solver",
       author='Roman Stražanec',
