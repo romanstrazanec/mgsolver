@@ -2,7 +2,7 @@ from .color import Color
 from typing import List
 
 
-class BallSortPuzzleSolver:
+class BallSortPuzzle:
 
     def __init__(self, cells: List[List[int]], max_in_cell=4):
         self.cells = [cell[:] for cell in cells]

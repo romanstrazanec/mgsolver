@@ -1,4 +1,4 @@
-from .color import Color
+from mgsolver.color import Color
 
 
 class Levels:

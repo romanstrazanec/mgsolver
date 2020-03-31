@@ -1,6 +1,5 @@
-from .solver import BallSortPuzzleSolver
-from .levels import Levels
+from .solver import BallSortPuzzle
 
-b = BallSortPuzzleSolver(Levels.l2)
+b = BallSortPuzzle(Levels.l2)
 b.solve()
 print(b.cells)
