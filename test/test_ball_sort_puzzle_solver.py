@@ -69,18 +69,18 @@ levels = {
         []
     ],
     103: [
-        [Color.cyan, Color.orange, Color.yellow, Color.lightblue],
-        [Color.green, Color.yellow, Color.lightgreen, Color.lightblue],
-        [Color.blue, Color.red, Color.cyan, Color.purple],
+        [Color.lightgreen, Color.orange, Color.yellow, Color.lightblue],
+        [Color.darkgreen, Color.yellow, Color.green, Color.lightblue],
+        [Color.blue, Color.red, Color.lightgreen, Color.purple],
         [Color.gray, Color.red, Color.lightblue, Color.yellow],
-        [Color.yellow, Color.blue, Color.pink, Color.green],
-        [Color.lightgreen, Color.brown, Color.green, Color.brown],
+        [Color.yellow, Color.blue, Color.pink, Color.darkgreen],
+        [Color.green, Color.brown, Color.darkgreen, Color.brown],
         [Color.red, Color.purple, Color.blue, Color.brown],
         [Color.brown, Color.blue, Color.pink, Color.purple],
-        [Color.gray, Color.cyan, Color.pink, Color.gray],
-        [Color.lightblue, Color.lightgreen, Color.cyan, Color.orange],
-        [Color.red, Color.purple, Color.gray, Color.green],
-        [Color.orange, Color.lightgreen, Color.orange, Color.pink],
+        [Color.gray, Color.lightgreen, Color.pink, Color.gray],
+        [Color.lightblue, Color.green, Color.lightgreen, Color.orange],
+        [Color.red, Color.purple, Color.gray, Color.darkgreen],
+        [Color.orange, Color.green, Color.orange, Color.pink],
         [],
         []
     ]
