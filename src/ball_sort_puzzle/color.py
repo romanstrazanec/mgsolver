@@ -1,14 +1,30 @@
 class Color:
-    orange = 0
-    lightgreen = 1
-    purple = 2
+    blue = 0
+    brown = 1
+    cyan = 2
     gray = 3
-    pink = 4
-    red = 5
-    green = 6
-    lightblue = 7
-    blue = 8
+    green = 4
+    lightblue = 5
+    lightgreen = 6
+    orange = 7
+    pink = 8
+    purple = 9
+    red = 10
+    yellow = 11
 
     @staticmethod
     def to_string(c: int) -> str:
-        return ['orange', 'lightgreen', 'purple', 'gray', 'pink', 'red', 'green', 'lightblue', 'blue'][c]
+        return [
+            'blue',
+            'brown',
+            'cyan',
+            'gray',
+            'green',
+            'lightblue',
+            'lightgreen',
+            'orange',
+            'pink',
+            'purple',
+            'red',
+            'yellow'
+        ][c]
