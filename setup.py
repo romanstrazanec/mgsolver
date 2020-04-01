@@ -9,7 +9,7 @@ setup(name='mgsolver',
       author_email='roman.strazanec007@gmail.com',
       license='MIT',
       url='https://github.com/romanstrazanec/mgsolver',
-      # download_url='',
+      download_url='https://github.com/romanstrazanec/mgsolver/releases/tag/v0.0.1',
       classifiers=[
           "Development Status :: 4 - Beta",
           "Environment :: Console",
