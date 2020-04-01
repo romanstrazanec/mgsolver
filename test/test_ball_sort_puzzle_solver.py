@@ -64,7 +64,9 @@ levels = {
     3: [
         [Color.blue, Color.orange, Color.red, Color.blue],
         [Color.orange, Color.orange, Color.red, Color.blue],
-        [Color.red, Color.blue, Color.orange, Color.red]
+        [Color.red, Color.blue, Color.orange, Color.red],
+        [],
+        []
     ],
     103: [
         [Color.cyan, Color.orange, Color.yellow, Color.lightblue],
