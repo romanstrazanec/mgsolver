@@ -1,24 +1,6 @@
 from .color import Color
 
-# cells = [
-#     [C.gray],
-#     [C.gray, C.gray, C.gray]
-# ]
-
-# cells = [
-#     [C.gray, C.purple, C.lightgreen, C.purple],
-#     [C.lightgreen, C.pink, C.pink, C.pink],
-#     [C.pink, C.lightgreen, C.purple, C.lightgreen],
-#     [C.gray, C.gray, C.gray, C.purple],
-#     [],
-#     [],
-#     [],
-#     [],
-#     [],
-#     [],
-#     []
-# ]
-
+# level 5x
 cells = [
     [Color.gray, Color.purple, Color.lightgreen, Color.orange],
     [Color.red, Color.pink, Color.pink, Color.pink],

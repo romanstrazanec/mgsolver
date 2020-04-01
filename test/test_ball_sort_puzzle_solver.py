@@ -1,3 +1,6 @@
+import unittest
+
+from src.ball_sort_puzzle.solver import BallSortPuzzle
 from src.ball_sort_puzzle.color import Color
 
 
@@ -35,3 +38,17 @@ class Levels:
         [],
         []
     ]
+
+
+class TestBallSortPuzzleSolver(unittest.TestCase):
+
+    # def setUp(self) -> None:
+    #     self.solver = Ball
+
+    def test_level1(self):
+        solver = BallSortPuzzle(Levels.l1)
+        self.assertTrue(solver.solve())
+
+    def test_level2(self):
+        solver = BallSortPuzzle(Levels.l2)
+        self.assertTrue(solver.solve())
