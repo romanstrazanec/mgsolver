@@ -5,16 +5,50 @@ from src.ball_sort_puzzle.color import Color
 
 
 class TestBallSortPuzzleSolver(unittest.TestCase):
+
+    def test_all_levels_valid(self):
+        for level in levels.keys():
+            ball_sort_puzzle = BallSortPuzzle(levels[level])
+            self.assertNotEqual(ball_sort_puzzle.cells_len, 0, f'Level {level} is invalid.')
+
+    def test_level_validation(self):
+        # valid
+        BallSortPuzzle([[0, 0, 0], [0]])
+        BallSortPuzzle([[0, 1, 2, 1], [1, 1, 2, 0], [2, 2], [0, 0], []])
+
+        # finished
+        BallSortPuzzle([[0, 0, 0, 0]])
+        BallSortPuzzle([[0, 0, 0, 0], [1, 1, 1, 1], []])
+
+        # empty
+        BallSortPuzzle([[]])
+        BallSortPuzzle([[], [], []])
+
+        # not default max_in_cell
+        BallSortPuzzle([[0, 0], [0]], max_in_cell=3)
+        BallSortPuzzle([[0, 1, 1], [0, 1, 0], []], max_in_cell=3)
+
+        # invalid number
+        self.assertRaises(Exception, lambda: BallSortPuzzle([[0, 0], [0]]),
+                          'Level should be invalid if not all the colors are in number of 4.')
+        self.assertRaises(Exception, lambda: BallSortPuzzle([[0, 1], [0], []]),
+                          'Level should be invalid if not all the colors are in number of 4.')
+
+        # not enough number of cells for all the colors
+        self.assertRaises(Exception, lambda: BallSortPuzzle([[0, 1, 2, 3]], max_in_cell=1),
+                          'Level should be invalid if not enough cells for all the colors.')
+
     def test_all_levels(self):
-        for i in levels.keys():
-            print(f'\nTESTING LEVEL {i}\n')
-            ball_sort_puzzle = BallSortPuzzle(levels[i])
-            self.assertTrue(ball_sort_puzzle.solve())
+        for level in levels.keys():
+            print(f'\nTESTING LEVEL {level}\n')
+            ball_sort_puzzle = BallSortPuzzle(levels[level])
+            self.assertTrue(ball_sort_puzzle.solve(), f'Did not solve level {level}.')
             print('=' * 25)
 
     def test_level(self):
-        ball_sort_puzzle = BallSortPuzzle(levels[3])
-        self.assertTrue(ball_sort_puzzle.solve())
+        level = 3
+        ball_sort_puzzle = BallSortPuzzle(levels[level])
+        self.assertTrue(ball_sort_puzzle.solve(), f'Did not solve level {level}.')
 
 
 levels = {
