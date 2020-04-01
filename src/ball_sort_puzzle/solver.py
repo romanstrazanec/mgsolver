@@ -5,9 +5,35 @@ from typing import List
 class BallSortPuzzle:
 
     def __init__(self, cells: List[List[int]], max_in_cell=4):
-        self.cells = [cell[:] for cell in cells]
-        self.cells_len = len(self.cells)
+        self.cells = cells
         self.max_in_cell = max_in_cell
+        self.validate()
+
+    def validate(self):
+        colors = {}
+        for cell in self.cells:
+            for color in cell:
+                if color in colors.keys():
+                    colors[color] += 1
+                else:
+                    colors[color] = 1
+
+        color_amounts = colors.values()
+        if self.cells_len < len(color_amounts) or any(amount != self.max_in_cell for amount in color_amounts):
+            self.clear_cells()
+            raise Exception('The ball sort level is not valid.')
+
+    @property
+    def cells(self):
+        return self.__cells
+
+    @cells.setter
+    def cells(self, cells):
+        self.__cells = [cell[:] for cell in cells]
+        self.cells_len = len(self.cells)
+
+    def clear_cells(self):
+        self.cells = [[]]
 
     def finished(self) -> bool:
         for cell in self.cells:
