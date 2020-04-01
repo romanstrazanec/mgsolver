@@ -1,7 +1,7 @@
 class Color:
     blue = 0
     brown = 1
-    cyan = 2
+    darkgreen = 2
     gray = 3
     green = 4
     lightblue = 5
@@ -17,7 +17,7 @@ class Color:
         return [
             'blue',
             'brown',
-            'cyan',
+            'darkgreen',
             'gray',
             'green',
             'lightblue',
