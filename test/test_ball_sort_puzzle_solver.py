@@ -4,25 +4,35 @@ from src.ball_sort_puzzle.solver import BallSortPuzzle
 from src.ball_sort_puzzle.color import Color
 
 
-class Levels:
-    l1 = [
+class TestBallSortPuzzleSolver(unittest.TestCase):
+    def test_all_levels(self):
+        for i in levels.keys():
+            print(f'\nTESTING LEVEL {i}\n')
+            ball_sort_puzzle = BallSortPuzzle(levels[i])
+            self.assertTrue(ball_sort_puzzle.solve())
+            print('=' * 25)
+
+    def test_level(self):
+        ball_sort_puzzle = BallSortPuzzle(levels[3])
+        self.assertTrue(ball_sort_puzzle.solve())
+
+
+levels = {
+    1: [
         [Color.orange],
         [Color.orange, Color.orange, Color.orange]
-    ]
-
-    l2 = [
+    ],
+    2: [
         [Color.blue, Color.orange, Color.blue, Color.orange],
         [Color.orange, Color.blue, Color.orange, Color.blue],
         []
-    ]
-
-    l3 = [
+    ],
+    3: [
         [Color.blue, Color.orange, Color.red, Color.blue],
         [Color.orange, Color.orange, Color.red, Color.blue],
         [Color.red, Color.blue, Color.orange, Color.red]
-    ]
-
-    l103 = [
+    ],
+    103: [
         [Color.cyan, Color.orange, Color.yellow, Color.lightblue],
         [Color.green, Color.yellow, Color.lightgreen, Color.lightblue],
         [Color.blue, Color.red, Color.cyan, Color.purple],
@@ -38,17 +48,4 @@ class Levels:
         [],
         []
     ]
-
-
-class TestBallSortPuzzleSolver(unittest.TestCase):
-
-    # def setUp(self) -> None:
-    #     self.solver = Ball
-
-    def test_level1(self):
-        solver = BallSortPuzzle(Levels.l1)
-        self.assertTrue(solver.solve())
-
-    def test_level2(self):
-        solver = BallSortPuzzle(Levels.l2)
-        self.assertTrue(solver.solve())
+}
