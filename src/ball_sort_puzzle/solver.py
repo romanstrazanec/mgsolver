@@ -43,60 +43,60 @@ class BallSortPuzzle:
                 return False
         return True
 
-    def move(self, color: int, from_index: int, to_index: int):
+    def __move(self, color: int, from_index: int, to_index: int):
         self.cells[to_index].append(color)  # append color here
         self.cells[from_index].pop(-1)  # pop from cell
 
-    def solve(self, current_index=0) -> bool:
+    def __not_empty_cells(self):
+        return filter(lambda i: len(self.cells[i]) > 0, range(self.cells_len))
+
+    def __top_color(self, index: int) -> int:
+        return self.cells[index][-1]
+
+    def solve(self) -> bool:
         if self.finished():
             return True
 
-        if current_index > self.cells_len - 1:
-            return False
+        # not empty cells
+        for current_index in self.__not_empty_cells():
 
-        # empty, nothing to move from here
-        if len(self.cells[current_index]) == 0:
-            return self.solve(current_index + 1)
+            current_color = self.__top_color(current_index)
 
-        current_color = self.cells[current_index][-1]
-        alone = len(self.cells[current_index]) == 1
+            if any(c != current_color for c in self.cells[current_index]):
+                # all other indexes
+                for other_index in filter(lambda i: i != current_index, range(self.cells_len)):
 
-        def filter_f(i: int) -> bool:
-            return 0 < len(self.cells[i]) < self.max_in_cell \
-                   and i != current_index \
-                   and self.cells[i][-1] == current_color
+                    other_cell_len = len(self.cells[other_index])
 
-        # try non empty first
-        for other_index in filter(filter_f, range(self.cells_len)):
-            # last color in current cell or the colors are different under the top
-            if alone or any(c != current_color for c in self.cells[current_index][:-1]) \
-                    or all(c == current_color for c in self.cells[other_index]):
-                # actual movement
-                self.move(color=current_color, from_index=current_index, to_index=other_index)
+                    # other index not empty and not full
+                    if 0 < other_cell_len < self.max_in_cell:
+                        # same color at the top
+                        if current_color == self.__top_color(other_index):
+                            self.__move(current_color, from_index=current_index, to_index=other_index)
+                            if self.solve():
+                                print(f'Moved {Color.to_string(current_color)} from {current_index} to {other_index}')
+                                return True
+                            else:
+                                self.__move(current_color, from_index=other_index, to_index=current_index)
 
-                # start moving again
-                if self.solve():
-                    # if successful, then finished
-                    print(f'Moved {Color.to_string(current_color)} from {current_index} to {other_index}')
-                    return True
-                else:
-                    # if unsuccessful, then there is no other possible move and move on to the next one
-                    self.move(color=current_color, from_index=other_index, to_index=current_index)
-
-        if not alone:
-            # moving to non empty did not work so place this into empty cell if exists
-            empty_cell_indexes = list(filter(lambda i: len(self.cells[i]) == 0, range(self.cells_len)))
-            if len(empty_cell_indexes) > 0:
-                # move all possible colors to empty cell
-                self.move(color=current_color, from_index=current_index, to_index=empty_cell_indexes[0])
-
-                if self.solve():
-                    # if successful, then finished
-                    print(f'Moved {Color.to_string(current_color)} from {current_index} to {empty_cell_indexes[0]}')
-                    return True
-                else:
-                    # if unsuccessful, then there is no other possible move and move on to the next one
-                    self.move(color=current_color, from_index=empty_cell_indexes[0], to_index=current_index)
-
-        # no successful movement to other indexes, continuing moving from next index
-        return self.solve(current_index + 1)
+                    # other index empty
+                    elif other_cell_len == 0:
+                        self.__move(current_color, from_index=current_index, to_index=other_index)
+                        if self.solve():
+                            print(f'Moved {Color.to_string(current_color)} from {current_index} to {other_index}')
+                            return True
+                        else:
+                            self.__move(current_color, from_index=other_index, to_index=current_index)
+            # same colors here but other cell can have the same colors as well
+            else:
+                for other_index in filter(lambda i: i != current_index and self.__top_color(i) == current_color,
+                                          self.__not_empty_cells()):
+                    if len(self.cells[current_index]) > len(self.cells[other_index]):
+                        self.__move(current_color, from_index=other_index, to_index=current_index)
+                        if self.solve():
+                            print(f'Moved {Color.to_string(current_color)} from {other_index} to {current_index}')
+                            return True
+                        else:
+                            self.__move(current_color, from_index=current_index, to_index=other_index)
+        # no other movement possible
+        return False
