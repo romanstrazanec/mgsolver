@@ -1,7 +1,7 @@
 import unittest
 
-from src.ball_sort_puzzle.solver import BallSortPuzzle
-from src.ball_sort_puzzle.color import Color
+from mgsolver.ball_sort_puzzle.solver import BallSortPuzzle
+from mgsolver.ball_sort_puzzle.color import Color
 
 
 class TestBallSortPuzzleSolver(unittest.TestCase):
@@ -39,14 +39,14 @@ class TestBallSortPuzzleSolver(unittest.TestCase):
                           'Level should be invalid if not enough cells for all the colors.')
 
     def test_all_levels(self):
-        for level in levels.keys():
+        for level in filter(lambda i: i < 10, levels.keys()):
             print(f'\nTESTING LEVEL {level}\n')
             ball_sort_puzzle = BallSortPuzzle(levels[level])
             self.assertTrue(ball_sort_puzzle.solve(), f'Did not solve level {level}.')
             print('=' * 25)
 
     def test_level(self):
-        level = 5
+        level = 103
         ball_sort_puzzle = BallSortPuzzle(levels[level])
         self.assertTrue(ball_sort_puzzle.solve(), f'Did not solve level {level}.')
 
@@ -69,11 +69,11 @@ levels = {
         []
     ],
     4: [
-      [Color.blue, Color.red, Color.orange, Color.orange],
-      [Color.blue, Color.red, Color.blue, Color.red],
-      [Color.orange, Color.blue, Color.red, Color.orange],
-      [],
-      []
+        [Color.blue, Color.red, Color.orange, Color.orange],
+        [Color.blue, Color.red, Color.blue, Color.red],
+        [Color.orange, Color.blue, Color.red, Color.orange],
+        [],
+        []
     ],
     5: [
         [Color.lightgreen, Color.orange, Color.blue, Color.pink],
@@ -81,6 +81,53 @@ levels = {
         [Color.pink, Color.red, Color.orange, Color.red],
         [Color.orange, Color.pink, Color.red, Color.blue],
         [Color.lightgreen, Color.lightgreen, Color.red, Color.blue],
+        [],
+        [],
+    ],
+    6: [
+        [Color.red, Color.lightgreen, Color.lightgreen, Color.lightgreen],
+        [Color.orange, Color.red, Color.pink, Color.lightgreen],
+        [Color.pink, Color.orange, Color.red, Color.orange],
+        [Color.blue, Color.pink, Color.orange, Color.pink],
+        [Color.blue, Color.blue, Color.blue, Color.red],
+        [],
+        [],
+    ],
+    7: [
+        [Color.lightgreen, Color.orange, Color.red, Color.orange],
+        [Color.blue, Color.blue, Color.red, Color.orange],
+        [Color.pink, Color.pink, Color.blue, Color.orange],
+        [Color.lightgreen, Color.pink, Color.red, Color.blue],
+        [Color.lightgreen, Color.red, Color.lightgreen, Color.pink],
+        [],
+        [],
+    ],
+    8: [
+        [Color.lightgreen, Color.orange, Color.lightgreen, Color.blue],
+        [Color.orange, Color.pink, Color.pink, Color.orange],
+        [Color.pink, Color.red, Color.blue, Color.red],
+        [Color.blue, Color.red, Color.lightgreen, Color.pink],
+        [Color.blue, Color.lightgreen, Color.red, Color.orange],
+        [],
+        [],
+    ],
+    9: [
+        [Color.pink, Color.red, Color.blue, Color.pink],
+        [Color.red, Color.lightgreen, Color.lightgreen, Color.orange],
+        [Color.red, Color.orange, Color.orange, Color.pink],
+        [Color.pink, Color.red, Color.lightgreen, Color.blue],
+        [Color.lightgreen, Color.orange, Color.blue, Color.blue],
+        [],
+        [],
+    ],
+    10: [
+        [Color.pink, Color.blue, Color.lightgreen, Color.blue],
+        [Color.orange, Color.gray, Color.pink, Color.red],
+        [Color.blue, Color.lightblue, Color.lightblue, Color.lightgreen],
+        [Color.pink, Color.orange, Color.orange, Color.lightgreen],
+        [Color.gray, Color.gray, Color.lightgreen, Color.red],
+        [Color.blue, Color.red, Color.lightblue, Color.lightblue],
+        [Color.red, Color.pink, Color.orange, Color.gray],
         [],
         [],
     ],
