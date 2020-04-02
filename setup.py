@@ -1,7 +1,9 @@
 from setuptools import setup
 
+version = '0.1.0'
+
 setup(name='mgsolver',
-      version='0.0.1',
+      version=version,
       packages=['mgsolver/ball_sort_puzzle', 'mgsolver/nonogram', 'mgsolver/sudoku'],
       description='Collection of mini game solvers.',
       keywords="mgsolver mini game solver",
@@ -9,7 +11,7 @@ setup(name='mgsolver',
       author_email='roman.strazanec007@gmail.com',
       license='MIT',
       url='https://github.com/romanstrazanec/mgsolver',
-      download_url='https://github.com/romanstrazanec/mgsolver/releases/tag/v0.0.1',
+      download_url=f'https://github.com/romanstrazanec/mgsolver/releases/tag/v{version}',
       classifiers=[
           "Development Status :: 4 - Beta",
           "Environment :: Console",
