@@ -46,7 +46,7 @@ class TestBallSortPuzzleSolver(unittest.TestCase):
             print('=' * 25)
 
     def test_level(self):
-        level = 3
+        level = 5
         ball_sort_puzzle = BallSortPuzzle(levels[level])
         self.assertTrue(ball_sort_puzzle.solve(), f'Did not solve level {level}.')
 
@@ -67,6 +67,22 @@ levels = {
         [Color.red, Color.blue, Color.orange, Color.red],
         [],
         []
+    ],
+    4: [
+      [Color.blue, Color.red, Color.orange, Color.orange],
+      [Color.blue, Color.red, Color.blue, Color.red],
+      [Color.orange, Color.blue, Color.red, Color.orange],
+      [],
+      []
+    ],
+    5: [
+        [Color.lightgreen, Color.orange, Color.blue, Color.pink],
+        [Color.orange, Color.lightgreen, Color.blue, Color.pink],
+        [Color.pink, Color.red, Color.orange, Color.red],
+        [Color.orange, Color.pink, Color.red, Color.blue],
+        [Color.lightgreen, Color.lightgreen, Color.red, Color.blue],
+        [],
+        [],
     ],
     103: [
         [Color.lightgreen, Color.orange, Color.yellow, Color.lightblue],
