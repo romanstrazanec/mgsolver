@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(name='mgsolver',
       version='0.0.1',
-      packages=['src/ball_sort_puzzle', 'src/nonogram', 'src/sudoku'],
+      packages=['mgsolver/ball_sort_puzzle', 'mgsolver/nonogram', 'mgsolver/sudoku'],
       description='Collection of mini game solvers.',
       keywords="mgsolver mini game solver",
       author='Roman Stražanec',
